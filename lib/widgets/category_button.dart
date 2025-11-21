@@ -77,6 +77,7 @@ class _CategoryButtonState extends State<CategoryButton> {
             // Text kategori
             Text(
               widget.title,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,

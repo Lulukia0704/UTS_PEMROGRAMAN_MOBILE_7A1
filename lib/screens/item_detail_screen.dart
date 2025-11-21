@@ -19,8 +19,20 @@ class ItemDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Ukuran gambar responsif
+    double imageHeight = screenHeight * 0.35; // 35% dari tinggi layar
+    if (screenWidth > 600) {
+      imageHeight = screenHeight * 0.4; // 40% untuk tablet
+    }
+
+    // Padding responsif
+    double horizontalPadding = screenWidth * 0.04;
+
     return Scaffold(
-      appBar: const AppHeader(title: '', showBackButton: true),//tombol back aktif
+      appBar: const AppHeader(title: '', showBackButton: true),
       body: Column(
         children: [
           // Kontainer 'ProductDetail'
@@ -44,16 +56,13 @@ class ItemDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Gambar produk
+                  // Gambar produk responsif
                   Container(
                     width: double.infinity,
-                    height: 300,
+                    height: imageHeight,
                     color: const Color(0xFFFFF8E1),
                     child: imagePath.isNotEmpty
-                        ? Image.asset(
-                            imagePath,
-                            fit: BoxFit.contain,
-                          )
+                        ? Image.asset(imagePath, fit: BoxFit.contain)
                         : const Icon(
                             Icons.image,
                             size: 100,
@@ -61,17 +70,17 @@ class ItemDetailScreen extends StatelessWidget {
                           ),
                   ),
 
-                  // Detail produk
+                  // Detail produk dengan padding responsif
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(horizontalPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Nama produk
                         Text(
                           title,
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: screenWidth < 600 ? 16 : 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
@@ -82,10 +91,10 @@ class ItemDetailScreen extends StatelessWidget {
                         // Harga
                         Text(
                           price,
-                          style: const TextStyle(
-                            fontSize: 20,
+                          style: TextStyle(
+                            fontSize: screenWidth < 600 ? 20 : 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFFE94B73),
+                            color: const Color(0xFFE94B73),
                           ),
                         ),
 
@@ -95,7 +104,7 @@ class ItemDetailScreen extends StatelessWidget {
                         Text(
                           originalPrice,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: screenWidth < 600 ? 12 : 14,
                             color: Colors.grey[600],
                           ),
                         ),
@@ -105,16 +114,16 @@ class ItemDetailScreen extends StatelessWidget {
                         // Rating dan berat
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.star,
-                              size: 16,
+                              size: screenWidth < 600 ? 16 : 18,
                               color: Colors.amber,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               weight,
-                              style: const TextStyle(
-                                fontSize: 12,
+                              style: TextStyle(
+                                fontSize: screenWidth < 600 ? 12 : 14,
                                 color: Colors.black,
                               ),
                             ),
@@ -124,10 +133,10 @@ class ItemDetailScreen extends StatelessWidget {
                         const SizedBox(height: 20),
 
                         // Deskripsi lengkap
-                        const Text(
+                        Text(
                           'Deskripsi :',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: screenWidth < 600 ? 14 : 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
@@ -135,10 +144,10 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 8),
 
-                        const Text(
+                        Text(
                           'Makanan basah premium khusus anak kucing dengan tekstur paté lembut yang mudah dimakan dan dicerna. Menggunakan daging ayam berkualitas tinggi dalam purée yang menghidrasi, membantu memenuhi kebutuhan nutrisi kitten dalam masa tumbuh kembang.',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: screenWidth < 600 ? 12 : 14,
                             color: Colors.black87,
                             height: 1.5,
                           ),
@@ -146,10 +155,10 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 16),
 
-                        const Text(
+                        Text(
                           'Keunggulan Produk:',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: screenWidth < 600 ? 14 : 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
@@ -157,7 +166,7 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 8),
 
-                        const Text(
+                        Text(
                           '• Menggunakan chicken breast asli\n'
                           '• Tekstur paté lembut, ideal untuk kitten\n'
                           '• Grain-free, gluten-free, dan carrageenan-free\n'
@@ -166,7 +175,7 @@ class ItemDetailScreen extends StatelessWidget {
                           '• Cocok untuk kitten semua ras\n'
                           '• Tanpa bahan pengawet dan pewarna buatan',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: screenWidth < 600 ? 12 : 14,
                             color: Colors.black87,
                             height: 1.8,
                           ),
@@ -174,10 +183,10 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 16),
 
-                        const Text(
+                        Text(
                           'Cocok Untuk:',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: screenWidth < 600 ? 14 : 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
@@ -185,12 +194,12 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 8),
 
-                        const Text(
+                        Text(
                           '✔ Anak kucing usia 1–12 bulan\n'
                           '✔ Kitten yang membutuhkan makanan bertekstur lembut\n'
                           '✔ Kitten yang sensitif terhadap biji-bijian',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: screenWidth < 600 ? 12 : 14,
                             color: Colors.black87,
                             height: 1.8,
                           ),
@@ -198,10 +207,10 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 16),
 
-                        const Text(
+                        Text(
                           'Berat Bersih:',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: screenWidth < 600 ? 14 : 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
@@ -209,17 +218,16 @@ class ItemDetailScreen extends StatelessWidget {
 
                         const SizedBox(height: 4),
 
-                        const Text(
+                        Text(
                           '85g (3 oz)',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: screenWidth < 600 ? 12 : 14,
                             color: Colors.black87,
                           ),
                         ),
 
                         const SizedBox(height: 24),
 
-                        // Divider
                         const Divider(thickness: 1),
 
                         const SizedBox(height: 16),
@@ -229,10 +237,11 @@ class ItemDetailScreen extends StatelessWidget {
                           width: double.infinity,
                           child: OutlinedButton.icon(
                             onPressed: () {
-                              // Tampilkan notifikasi halaman belum tersedia
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('Fitur rating dan komentar belum tersedia'),
+                                  content: Text(
+                                    'Fitur rating dan komentar belum tersedia',
+                                  ),
                                   duration: Duration(seconds: 2),
                                   backgroundColor: Colors.orange,
                                 ),
@@ -242,11 +251,11 @@ class ItemDetailScreen extends StatelessWidget {
                               Icons.rate_review,
                               color: Color(0xFFE94B73),
                             ),
-                            label: const Text(
+                            label: Text(
                               'Beri Rating dan Komentar',
                               style: TextStyle(
-                                color: Color(0xFFE94B73),
-                                fontSize: 14,
+                                color: const Color(0xFFE94B73),
+                                fontSize: screenWidth < 600 ? 14 : 16,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -263,7 +272,7 @@ class ItemDetailScreen extends StatelessWidget {
                           ),
                         ),
 
-                        const SizedBox(height: 80), // Space untuk bottom bar
+                        const SizedBox(height: 100), // Space untuk bottom bar
                       ],
                     ),
                   ),
@@ -272,7 +281,7 @@ class ItemDetailScreen extends StatelessWidget {
             ),
           ),
 
-          // Bottom bar FIXED (Cart & Buy buttons)
+          // Bottom bar FIXED responsif
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -284,74 +293,80 @@ class ItemDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                // Button Cart
-                Expanded(
-                  flex: 1,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Fitur keranjang belum tersedia'),
-                          duration: Duration(seconds: 2),
-                          backgroundColor: Colors.orange,
+            padding: EdgeInsets.all(horizontalPadding),
+            child: SafeArea(
+              child: Row(
+                children: [
+                  // Button Cart
+                  Expanded(
+                    flex: 1,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Fitur keranjang belum tersedia'),
+                            duration: Duration(seconds: 2),
+                            backgroundColor: Colors.orange,
+                          ),
+                        );
+                      },
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          color: Color(0xFFE94B73),
+                          width: 2,
                         ),
-                      );
-                    },
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
-                        color: Color(0xFFE94B73),
-                        width: 2,
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Color(0xFFE94B73),
-                      size: 24,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(width: 12),
-
-                // Button Buy
-                Expanded(
-                  flex: 3,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Fitur pembelian belum tersedia'),
-                          duration: Duration(seconds: 2),
-                          backgroundColor: Colors.orange,
+                        padding: EdgeInsets.symmetric(
+                          vertical: screenWidth < 600 ? 12 : 14,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFE94B73),
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      elevation: 0,
-                    ),
-                    child: const Text(
-                      'Beli Sekarang',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                      child: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: const Color(0xFFE94B73),
+                        size: screenWidth < 600 ? 22 : 24,
                       ),
                     ),
                   ),
-                ),
-              ],
+
+                  const SizedBox(width: 12),
+
+                  // Button Buy
+                  Expanded(
+                    flex: 3,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Fitur pembelian belum tersedia'),
+                            duration: Duration(seconds: 2),
+                            backgroundColor: Colors.orange,
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFE94B73),
+                        padding: EdgeInsets.symmetric(
+                          vertical: screenWidth < 600 ? 12 : 14,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: Text(
+                        'Beli Sekarang',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: screenWidth < 600 ? 14 : 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
