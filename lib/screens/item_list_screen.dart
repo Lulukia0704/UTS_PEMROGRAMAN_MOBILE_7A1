@@ -21,7 +21,7 @@ class ItemListScreen extends StatelessWidget {
 
     if (screenWidth < 600) {
       crossAxisCount = 2; // HP kecil
-      childAspectRatio = 0.55;
+      childAspectRatio = 0.53;
     } else if (screenWidth < 900) {
       crossAxisCount = 3; // Tablet kecil
       childAspectRatio = 0.70;
@@ -97,7 +97,20 @@ class ItemListScreen extends StatelessWidget {
                     price: 'Rp 28.000',
                     originalPrice: 'Grain-free, Hydrating purée',
                     weight: '4.8 | 85 g',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemDetailScreen(
+                            imagePath: 'assets/kalengan.jpg',
+                            title: 'Royal Canin Aging 12+ - Wet Food (Kaleng)',
+                            price: 'Rp 28.000',
+                            originalPrice: 'Grain-free, Hydrating purée',
+                            weight: '4.8 | 85 g'
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   // Item 3
@@ -107,7 +120,20 @@ class ItemListScreen extends StatelessWidget {
                     price: 'Rp 160.000',
                     originalPrice: 'Grain-free, Hydrating purée',
                     weight: '4.8 | 1 kg',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemDetailScreen(
+                             imagePath: 'assets/royalcanin.jpg',
+                              title: 'Royal Canin Persian Kitten - Dry Food',
+                              price: 'Rp 160.000',
+                              originalPrice: 'Grain-free, Hydrating purée',
+                              weight: '4.8 | 1 kg'
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   // Item 4
@@ -117,7 +143,20 @@ class ItemListScreen extends StatelessWidget {
                     price: 'Rp 45.000',
                     originalPrice: 'Grain-free, Hydrating purée',
                     weight: '4.8 | 454 g',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemDetailScreen(
+                            imagePath: 'assets/vivacats.jpg',
+                            title: 'Viva Cats Chicken - Raw/Minced Wet Food',
+                            price: 'Rp 45.000',
+                            originalPrice: 'Grain-free, Hydrating purée',
+                            weight: '4.8 | 454 g',
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   // Item 5
@@ -127,18 +166,43 @@ class ItemListScreen extends StatelessWidget {
                     price: 'Rp 7.000',
                     originalPrice: 'Grain-free, Hydrating purée',
                     weight: '4.8 | 85 g',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemDetailScreen(
+                            imagePath: 'assets/wiskas.jpg',
+                            title: 'Whiskas Pouch Tuna - Wet Food',
+                            price: 'Rp 7.000',
+                            originalPrice: 'Grain-free, Hydrating purée',
+                            weight: '4.8 | 85 g',
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   // Item 6
                   ItemCard(
                     imagePath: 'assets/wiskess.jpg',
-                    title:
-                        'Whiskas Meaty Selections - Chicken & Turkey Flavors (Dry Food)',
+                    title:'Whiskas Meaty Selections - Chicken & Turkey Flavors (Dry Food)',
                     price: 'Rp 180.000',
                     originalPrice: 'Grain-free, Hydrating purée',
                     weight: '4.8 | 3 kg',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemDetailScreen(
+                             imagePath: 'assets/wiskess.jpg',
+                              title:'Whiskas Meaty Selections - Chicken & Turkey Flavors (Dry Food)',
+                              price: 'Rp 180.000',
+                              originalPrice: 'Grain-free, Hydrating purée',
+                              weight: '4.8 | 3 kg',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

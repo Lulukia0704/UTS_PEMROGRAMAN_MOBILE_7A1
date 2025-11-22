@@ -78,11 +78,12 @@ class HomeScreen extends StatelessWidget {
                     imagePath: 'assets/icon2.png',
                     title: 'Peralatan Hewan',
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Halaman belum tersedia'),
-                          duration: Duration(seconds: 2),
-                          backgroundColor: Colors.orange,
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemListScreen(
+                            categoryName: 'Peralatan Hewan',
+                          ),
                         ),
                       );
                     },
@@ -93,11 +94,12 @@ class HomeScreen extends StatelessWidget {
                     imagePath: 'assets/icon3.png',
                     title: 'Aksesoris Hewan',
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Halaman belum tersedia'),
-                          duration: Duration(seconds: 2),
-                          backgroundColor: Colors.orange,
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ItemListScreen(
+                            categoryName: 'Aksesoris Hewan',
+                          ),
                         ),
                       );
                     },
